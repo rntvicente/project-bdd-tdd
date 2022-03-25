@@ -1,2 +1,4 @@
 node_modules
 database/*
+coverage
+.nyc_output
