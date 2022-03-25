@@ -2,11 +2,25 @@ const BaseRepository = require("../repository/base");
 
 class CarService {
   constructor({ cars }) {
-    this.carsRepository = new BaseRepository({ file: cars });
+    this.carRepository = new BaseRepository({ file: cars });
   }
 
-  test() {
-    return this.carsRepository.find();
+  getRandomPositionFromArray(list) {
+    return Math.floor(Math.random() * list.length);
+  }
+
+  chooseRandomCar(carCategory) {
+    const randomCarIndex = this.getRandomPositionFromArray(carCategory.carIds);
+    const carId = carCategory.carIds[randomCarIndex];
+
+    return carId;   
+  }
+
+  async getAvailableCar(carCategory) {
+    const carId = this.chooseRandomCar(carCategory);
+    const car = this.carRepository.find(carId);
+
+    return car;
   }
 }
 
