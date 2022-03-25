@@ -12,7 +12,7 @@ class BaseRepository {
       return content;
     }
 
-    return content.find(({id}) => id === itemId);
+    return content.find(({ id }) => id === itemId);
   }
 }
 
